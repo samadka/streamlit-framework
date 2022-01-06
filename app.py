@@ -37,9 +37,9 @@ test = {"January":1, "February":2, "March":3, "April":4, "May":5, "June":6, "Jul
 selected_month = st.sidebar.selectbox('Months:', test.keys())
 
 subdf = df.loc[(df['year']==selected_year) & (df['month']==test[selected_month])]
-subdf = subdf.reset_index()
-subdf.drop(labels =['index'], axis=1, inplace=True)
-subdf.sort_values("date", ascending = True, inplace = True)
+subdf.sort_values(["date"], ascending=False, inplace=True)
+subdf.closing_price = subdf.closing_price.astype(float)
+
 
 st.write(subdf)
 
